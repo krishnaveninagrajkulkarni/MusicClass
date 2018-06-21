@@ -8,22 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		06491B3B20DB762C00364A51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06491B3A20DB762C00364A51 /* AppDelegate.swift */; };
-		06491B3D20DB762C00364A51 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06491B3C20DB762C00364A51 /* ViewController.swift */; };
 		06491B4020DB762C00364A51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06491B3E20DB762C00364A51 /* Main.storyboard */; };
 		06491B4320DB762C00364A51 /* MusicClass.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 06491B4120DB762C00364A51 /* MusicClass.xcdatamodeld */; };
 		06491B4520DB763400364A51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 06491B4420DB763400364A51 /* Assets.xcassets */; };
 		06491B4820DB763400364A51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06491B4620DB763400364A51 /* LaunchScreen.storyboard */; };
+		06491B5420DB773D00364A51 /* RaagsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06491B5320DB773D00364A51 /* RaagsTableViewController.swift */; };
+		06491B5620DB78DE00364A51 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06491B5520DB78DE00364A51 /* Default-568h@2x.png */; };
+		06491B5820DB9B2700364A51 /* RaagDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06491B5720DB9B2700364A51 /* RaagDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		06491B3720DB762C00364A51 /* MusicClass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicClass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06491B3A20DB762C00364A51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		06491B3C20DB762C00364A51 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		06491B3F20DB762C00364A51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		06491B4220DB762C00364A51 /* MusicClass.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MusicClass.xcdatamodel; sourceTree = "<group>"; };
 		06491B4420DB763400364A51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06491B4720DB763400364A51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		06491B4920DB763400364A51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06491B5320DB773D00364A51 /* RaagsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaagsTableViewController.swift; sourceTree = "<group>"; };
+		06491B5520DB78DE00364A51 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		06491B5720DB9B2700364A51 /* RaagDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaagDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +44,7 @@
 		06491B2E20DB762C00364A51 = {
 			isa = PBXGroup;
 			children = (
+				06491B5520DB78DE00364A51 /* Default-568h@2x.png */,
 				06491B3920DB762C00364A51 /* MusicClass */,
 				06491B3820DB762C00364A51 /* Products */,
 			);
@@ -56,15 +61,48 @@
 		06491B3920DB762C00364A51 /* MusicClass */ = {
 			isa = PBXGroup;
 			children = (
-				06491B3A20DB762C00364A51 /* AppDelegate.swift */,
-				06491B3C20DB762C00364A51 /* ViewController.swift */,
-				06491B3E20DB762C00364A51 /* Main.storyboard */,
-				06491B4420DB763400364A51 /* Assets.xcassets */,
-				06491B4620DB763400364A51 /* LaunchScreen.storyboard */,
 				06491B4920DB763400364A51 /* Info.plist */,
-				06491B4120DB762C00364A51 /* MusicClass.xcdatamodeld */,
+				06491B3A20DB762C00364A51 /* AppDelegate.swift */,
+				06491B4F20DB764700364A51 /* Controller */,
+				06491B5120DB765C00364A51 /* Model */,
+				06491B5020DB765000364A51 /* View */,
+				06491B5220DB768400364A51 /* Supporting Files */,
 			);
 			path = MusicClass;
+			sourceTree = "<group>";
+		};
+		06491B4F20DB764700364A51 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				06491B5320DB773D00364A51 /* RaagsTableViewController.swift */,
+				06491B5720DB9B2700364A51 /* RaagDetailsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		06491B5020DB765000364A51 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				06491B3E20DB762C00364A51 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		06491B5120DB765C00364A51 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				06491B4120DB762C00364A51 /* MusicClass.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		06491B5220DB768400364A51 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				06491B4620DB763400364A51 /* LaunchScreen.storyboard */,
+				06491B4420DB763400364A51 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06491B4820DB763400364A51 /* LaunchScreen.storyboard in Resources */,
+				06491B5620DB78DE00364A51 /* Default-568h@2x.png in Resources */,
 				06491B4520DB763400364A51 /* Assets.xcassets in Resources */,
 				06491B4020DB762C00364A51 /* Main.storyboard in Resources */,
 			);
@@ -138,8 +177,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06491B3D20DB762C00364A51 /* ViewController.swift in Sources */,
 				06491B4320DB762C00364A51 /* MusicClass.xcdatamodeld in Sources */,
+				06491B5420DB773D00364A51 /* RaagsTableViewController.swift in Sources */,
+				06491B5820DB9B2700364A51 /* RaagDetailsViewController.swift in Sources */,
 				06491B3B20DB762C00364A51 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
