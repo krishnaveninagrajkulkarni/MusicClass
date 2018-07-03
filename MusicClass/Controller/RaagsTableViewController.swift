@@ -9,32 +9,58 @@
 import UIKit
 import CoreData
 
-class RaagsTableViewController: UITableViewController {
+
+class RaagsTableViewController: UITableViewController, sendDataToRaagTable {
     
-    //Creating an empty array of class Raags
-    var raagNames = [Raags]()           
-    
+    //Creating an empty array
+    var raagNames = [NewRaagDetails]()
+    var localRaagName = [String]()
+   
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        readTheDataFromDB()
+        print("I am in ViewDidLoad of RaagTableViewController")
+        readTheDataFromNewRaagDetailsTable()
+        
     }
-
-   
+    
+    //Mark - Protocol Conformation by defining the Delegate Method
+    func delegateMethodOfNewRaag(data: String){
+        /* let newRaag = NewRaagDetails(context: context)
+        newRaag.raagName = data
+        raagNames.append(newRaag)*/
+      
+        localRaagName.append(data)
+        print("Added New RaagName on Table Screen")
+        tableView.reloadData()
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToNewRaag" {
+            let destinationVC = segue.destination as! NewRaagViewController
+            destinationVC.sendDataDelegate = self
+            
+        }else if segue.identifier == "goToRaagDetails" {
+            let destinationVC = segue.destination as! RaagDetailsViewController
+            if let indexPath = tableView.indexPathForSelectedRow {
+                destinationVC.selectedName = localRaagName[indexPath.row]
+            }
+        }
+    }
     // MARK:- Tableview DataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return raagNames.count
+        return localRaagName.count
     }
     
    
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "raagCells", for: indexPath)
-        cell.textLabel?.text = raagNames[indexPath.row].raagName
+        cell.textLabel?.text = localRaagName[indexPath.row]                         //raagNames[indexPath.row].raagName
         return cell
     }
     
@@ -42,48 +68,14 @@ class RaagsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete{
-            context.delete(raagNames[indexPath.row])
-            saveRaags()                                              //Delete the data from DB only when save Context is called
             
-            raagNames.remove(at: indexPath.row)                     //Delete the data from Array "raagNames"
-            tableView.deleteRows(at: [indexPath], with: .fade)      //Delete the cell from Tableview
+            context.delete(raagNames[indexPath.row])                    //Delete the data from DB
+            raagNames.remove(at: indexPath.row)
+            saveRaags()
             
+            localRaagName.remove(at: indexPath.row)                     //Delete the data from Array "localRaagName"
+            tableView.deleteRows(at: [indexPath], with: .fade)          //Delete the cell from Tableview
         }
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       // performSegue(withIdentifier: "goToRaagDetails", sender: self)
-    }
-/*  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC =  segue.destination as! RaagDetailsViewController
-        if let indexpath = tableView.indexPathForSelectedRow {
-            destinationVC.selectedRaag = raagNames[indexpath.row].raagName
-        }
-    }*/
-    
-    //Mark:- Add Button Method
-    
-    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        var textFieldData = UITextField()
-        let alert = UIAlertController(title: "Add New Raag", message: "", preferredStyle: .alert)
-        
-        let alertAction = UIAlertAction(title: "Add", style: .default) { (action) in
-            //Add code once Add is Pressed
-            let newRaag = Raags(context: self.context)
-            newRaag.raagName = textFieldData.text!
-            self.raagNames.append(newRaag)                          //adding newRaag to Global Array "raagNames"
-            self.saveRaags()
-            self.tableView.reloadData()
-        }
-        
-        alert.addTextField { (alertTextField) in
-            //Write code for TextField
-            alertTextField.placeholder = "Create a New Raag"
-            textFieldData = alertTextField
-        }
-        alert.addAction(alertAction)
-        
-        present(alert, animated: true, completion: nil)
     }
     
     //Mark - Save the Data in DB Table - Raags
@@ -95,21 +87,22 @@ class RaagsTableViewController: UITableViewController {
             print("Error while saving!! \(error)")
         }
     }
-    func readTheDataFromDB()
+    
+    //Fetching the entire column from DB
+    func readTheDataFromNewRaagDetailsTable()
     {
-        let request : NSFetchRequest<Raags> = Raags.fetchRequest()
+        let request : NSFetchRequest<NewRaagDetails> = NewRaagDetails.fetchRequest()
         
         do{
-            raagNames = try context.fetch(request)
-            
+            let dataRead = try context.fetch(request)
+            //Append in raagNames Array only all RaagNames fetcted from NewRaagDetails DB
+            for task in dataRead{
+                localRaagName.append(task.raagName!)
+            }
+            raagNames = dataRead
         }catch {
             print("Cannot Load Data \(error)")
         }
     }
     
-    func deleteDataFromDB()
-    {
-        
-    }
-
 }

@@ -9,6 +9,11 @@
 import UIKit
 import CoreData
 
+protocol sendDataToRaagTable{
+    
+    func delegateMethodOfNewRaag(data: String)
+}
+
 class NewRaagViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 
     
@@ -20,6 +25,10 @@ class NewRaagViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     @IBOutlet weak var sargamTextView: UITextView!
     @IBOutlet weak var jaankariTextView: UITextView!
     
+    var sendDataDelegate : sendDataToRaagTable?
+
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -28,8 +37,6 @@ class NewRaagViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         taalTextView.delegate = self
         sargamTextView.delegate = self
         jaankariTextView.delegate = self
-        
-        //listenToKeyboardNotifications()
         
         //Create a Tap Gesture - when user clicks on View after typing is donein textfield, the keyboard should gooff
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
@@ -70,27 +77,15 @@ class NewRaagViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     @objc func keyboardWillChange(notification: NSNotification) {
           print("notification name= \(notification.name)")
         //calculate keyboard rect area, whic is used to calculate keyboard height
-       // let keyboardEndFrameScreenCoordinates =  (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-   
-       // let keyboardEndrame = self.view.convert(keyboardEndFrameScreenCoordinates!, to: view.window)
-        
-        
       let keyboardRect =  (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
-        
-      
-        
+    
         if notification.name == NSNotification.Name.UIKeyboardWillHide {
             print("UIView Resumes #################")
             newRaagView.frame.origin.y = 0
-           // jaankariTextView.contentInset = UIEdgeInsets.zero
-            
-            
+   
         }else {
              print("UIView Moved *************")
              newRaagView.frame.origin.y  = (-((keyboardRect?.height)!))
-            
-            //jaankariTextView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardEndrame.height, right: 0)
-            //jaankariTextView.scrollIndicatorInsets = jaankariTextView.contentInset
         }
     }
     //Keyboard hides on Tap Gesture
@@ -102,5 +97,31 @@ class NewRaagViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         sargamTextView.endEditing(true)
         jaankariTextView.endEditing(true)
     }
+    
+    @IBAction func saveButtonPressed(_ sender: UIButton) {
+        let newRaag = NewRaagDetails(context: context)
+        
+        newRaag.raagName = raagNameTextField.text!
+        newRaag.saptak = saptakTextView.text
+        newRaag.taal = taalTextView.text
+        newRaag.sargamGeet = sargamTextView.text
+        newRaag.jaankari = jaankariTextView.text
 
+        saveNewRaagDetails()
+        print("Data Saved Successfully......")
+        
+        //Send Only new added Raag Name to RaagsTableViewController to display raagName on its list
+        sendDataDelegate?.delegateMethodOfNewRaag(data: raagNameTextField.text!)
+        
+    }
+    func saveNewRaagDetails(){
+        do{
+            try context.save()
+            
+        }catch{
+            print("Error in saving \(error)")
+        }
+    }
+    
+    
 }

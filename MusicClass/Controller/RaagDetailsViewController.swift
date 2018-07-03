@@ -10,42 +10,33 @@ import UIKit
 import CoreData
 
 class RaagDetailsViewController: UITableViewController {
-    var sectionTitles = ["Saptak", "Sargam Geet", "Taal" ,"Jaankari"]
+     var sectionTitles = ["Saptak", "Sargam Geet", "Taal" ,"Jaankari"]
+     var raagDetails =  [NewRaagDetails]()
+    var storeFetchedData = [String]()  //Empty Array
     
-    var sectionData = [["sa re ga ma pa da", "ni sa ma pa da" , "da sdfs rt rt"],["ad sad ddd dd ff gg hh nn", "ee rr tt yy uu", "ww ss xx cc vv bb "],["as sd xc vb nm hj yu"],["Matra-8" , "Tali - 1,3,7", "Khali -5", "Khand - 2,2,2,2"]]
     
-   // var sargamData = ["ad sad ddd dd ff gg hh nn", "ee rr tt yy uu", "ww ss xx cc vv bb "]
-    //var taalData = ["as sd xc vb nm hj yu"]
-    //var jaankariData = ["Matra-8" , "Tali - 1,3,7", "Khali -5", "Khand - 2,2,2,2"]
-    
+    var selectedName: String? {
+        didSet {
+            readRowFromDB()
+        }
+    }
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       // viewFecthedData()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
+/*
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        print("sectiontitle count= \(sectionTitles.count)")
         return  sectionTitles.count
     }
-    
+    */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sectionData[section].count
+        return   storeFetchedData.count
     }
-    
     /*
-    //This method titleForHeaderInSection displays title of Header in section but uses default/Standard Header style, font
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-       // print("SectionTitle data = \(sectionTitles[section])")
-        
-        return sectionTitles[section]
-    }*/
-    
+ 
   //This method viewForHeaderInSection displays customised title for section
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "raagNewCell") as! CustomViewCell
@@ -53,13 +44,46 @@ class RaagDetailsViewController: UITableViewController {
         headerCell.headerLabel.text! = sectionTitles[section]
         return headerCell
     }
-    
+    */
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "raagDetailsCell", for: indexPath)
-        print("indexpath.row= \(indexPath.row)")
-        cell.textLabel?.text = sectionData[indexPath.section][indexPath.row]
-        return cell
+         let cell = tableView.dequeueReusableCell(withIdentifier: "raagDetailsCell", for: indexPath) as! CustomViewCell
+        // let temporrayData = raagDetails[indexPath.row]
+        // cell.textLabel?.text = temporrayData.jaankari! + " " + temporrayData.taal! + " " + temporrayData.saptak!
+         // cell.textLabel?.text = storeFetchedData[indexPath.row]
+        cell.dataLabel.text = storeFetchedData[indexPath.row]
+         return cell
     }
-    
+    //Fetching a Row from DB
+    func readRowFromDB(){
+        print("I am reading from DB")
+        let request: NSFetchRequest<NewRaagDetails> = NewRaagDetails.fetchRequest()
+        
+        let predicate = NSPredicate(format: "raagName==%@ ", selectedName!)
+   
+        request.predicate = predicate
+        do{
+            raagDetails = try context.fetch(request)
+            
+            // prints data from raagDetails
+            for task in raagDetails{
+                storeFetchedData.append(task.jaankari!)
+                storeFetchedData.append(task.taal!)
+                storeFetchedData.append(task.saptak!)
+                storeFetchedData.append(task.sargamGeet!)
+                //storeFetchedData.append(task.raagName!)
+               // print("Fetched DAta is \(task.jaankari)")
+               // print("Fetched DAta is \(task.taal)")
+               // print("Fetched DAta is \(task.saptak)")
+            }
+        }catch {
+            print("Cannot Load Data \(error)")
+        }
+        tableView.reloadData()
+    }
 
+    func addInToLocalArray(){
+        
+    }
 }
+
+

@@ -27,7 +27,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="WSV-dY-QyT" kind="show" identifier="goToRaagDetails" id="meh-S5-NBx"/>
+                                    <segue destination="kWd-Eo-T4p" kind="show" identifier="goToRaagDetails" id="Xs8-IN-sNU"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -58,16 +58,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ncn-FL-h0B">
-                                <rect key="frame" x="10" y="74" width="355" height="30"/>
+                                <rect key="frame" x="10" y="74" width="355" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raag Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yV6-Ty-9GZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="177.5" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="177.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gem-60-tyP">
-                                        <rect key="frame" x="177.5" y="0.0" width="177.5" height="30"/>
+                                        <rect key="frame" x="177.5" y="0.0" width="177.5" height="20.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -75,36 +75,36 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="3Hy-Yx-0Iv">
-                                <rect key="frame" x="10" y="114" width="355" height="543"/>
+                                <rect key="frame" x="10" y="104.5" width="355" height="552.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="1kP-hk-Y7a">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="100.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="102.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raag Saptak" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sve-4H-zdb">
-                                                <rect key="frame" x="0.0" y="0.0" width="177.5" height="100.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="177.5" height="102.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="twD-k6-b7p">
-                                                <rect key="frame" x="177.5" y="0.0" width="177.5" height="100.5"/>
+                                                <rect key="frame" x="177.5" y="0.0" width="177.5" height="102.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vAd-0G-kFI">
-                                        <rect key="frame" x="0.0" y="110.5" width="355" height="100.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="vAd-0G-kFI">
+                                        <rect key="frame" x="0.0" y="112.5" width="355" height="102.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyU-vO-Rr3">
-                                                <rect key="frame" x="0.0" y="40" width="177.5" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="177.5" height="102.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="9Fx-79-oar">
-                                                <rect key="frame" x="177.5" y="0.0" width="177.5" height="100.5"/>
+                                                <rect key="frame" x="177.5" y="0.0" width="177.5" height="102.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -112,16 +112,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="KXl-GI-g8G">
-                                        <rect key="frame" x="0.0" y="221" width="355" height="101"/>
+                                        <rect key="frame" x="0.0" y="225" width="355" height="102.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sargam Geet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGk-8U-Mbv">
-                                                <rect key="frame" x="0.0" y="0.0" width="177.5" height="101"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="177.5" height="102.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nOO-cj-ybY">
-                                                <rect key="frame" x="177.5" y="0.0" width="177.5" height="101"/>
+                                                <rect key="frame" x="177.5" y="0.0" width="177.5" height="102.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -129,16 +129,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7yz-C7-5Af">
-                                        <rect key="frame" x="0.0" y="332" width="355" height="100.5"/>
+                                        <rect key="frame" x="0.0" y="337.5" width="355" height="102.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jaankari" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlF-hW-Sni">
-                                                <rect key="frame" x="0.0" y="0.0" width="177.5" height="100.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="177.5" height="102.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="M0F-Mw-8xc">
-                                                <rect key="frame" x="177.5" y="0.0" width="177.5" height="100.5"/>
+                                                <rect key="frame" x="177.5" y="0.0" width="177.5" height="102.5"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -146,15 +146,18 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WhH-wR-9vi" userLabel="BottomView">
-                                        <rect key="frame" x="0.0" y="442.5" width="355" height="100.5"/>
+                                        <rect key="frame" x="0.0" y="450" width="355" height="102.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="onN-C7-OLI">
-                                                <rect key="frame" x="10" y="10" width="335" height="80.5"/>
+                                                <rect key="frame" x="10" y="10" width="335" height="82.5"/>
                                                 <color key="backgroundColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                 <state key="normal" title="Save">
                                                     <color key="titleColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="saveButtonPressed:" destination="abI-Li-muD" eventType="touchUpInside" id="f2m-Nk-H6W"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.46202266219999999" green="0.83828371759999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -192,6 +195,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27g-Vg-pz2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1930" y="-73"/>
+        </scene>
+        <!--Raag Details View Controller-->
+        <scene sceneID="FGZ-r8-iRH">
+            <objects>
+                <tableViewController id="kWd-Eo-T4p" customClass="RaagDetailsViewController" customModule="MusicClass" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="eLC-Pk-rsh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="raagDetailsCell" rowHeight="68" id="Bfn-Cv-eRk" customClass="CustomViewCell" customModule="MusicClass" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="68"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bfn-Cv-eRk" id="03q-dP-LYI">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="67.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aK3-e6-1X0">
+                                            <rect key="frame" x="5" y="5" width="365" height="57.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.45138680930000002" green="0.99309605359999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="aK3-e6-1X0" secondAttribute="bottom" constant="5" id="0cJ-dj-YWF"/>
+                                        <constraint firstAttribute="trailing" secondItem="aK3-e6-1X0" secondAttribute="trailing" constant="5" id="cka-uG-e7S"/>
+                                        <constraint firstItem="aK3-e6-1X0" firstAttribute="top" secondItem="03q-dP-LYI" secondAttribute="top" constant="5" id="jsd-Lu-KoH"/>
+                                        <constraint firstItem="aK3-e6-1X0" firstAttribute="leading" secondItem="03q-dP-LYI" secondAttribute="leading" constant="5" id="nU6-hg-8Gy"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dataLabel" destination="aK3-e6-1X0" id="Um8-gt-Y4s"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="kWd-Eo-T4p" id="Tez-0W-cqa"/>
+                            <outlet property="delegate" destination="kWd-Eo-T4p" id="x7L-XP-aoH"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z8D-FN-vcO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1172" y="724.58770614692662"/>
         </scene>
         <!--Raag Details View Controller-->
         <scene sceneID="4HC-LW-OMN">

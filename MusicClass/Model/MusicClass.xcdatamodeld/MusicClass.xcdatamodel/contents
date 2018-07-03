@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E199" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="RaagDetails" representedClassName="RaagDetails" syncable="YES" codeGenerationType="class">
-        <attribute name="jaankari" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="saptak" attributeType="String" syncable="YES"/>
-        <attribute name="sargamGeet" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="tal" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="parentRaag" maxCount="1" deletionRule="Nullify" destinationEntity="Raags" inverseName="newRelationship" inverseEntity="Raags" syncable="YES"/>
-    </entity>
-    <entity name="Raags" representedClassName="Raags" syncable="YES" codeGenerationType="class">
+    <entity name="NewRaagDetails" representedClassName=".NewRaagDetails" syncable="YES" codeGenerationType="class">
+        <attribute name="jaankari" attributeType="String" syncable="YES"/>
         <attribute name="raagName" attributeType="String" syncable="YES"/>
-        <relationship name="newRelationship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RaagDetails" inverseName="parentRaag" inverseEntity="RaagDetails" syncable="YES"/>
+        <attribute name="saptak" attributeType="String" syncable="YES"/>
+        <attribute name="sargamGeet" attributeType="String" syncable="YES"/>
+        <attribute name="taal" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Raags" positionX="-281" positionY="90" width="128" height="73"/>
-        <element name="RaagDetails" positionX="-65" positionY="90" width="128" height="118"/>
+        <element name="NewRaagDetails" positionX="-569" positionY="-162" width="128" height="118"/>
     </elements>
 </model>
