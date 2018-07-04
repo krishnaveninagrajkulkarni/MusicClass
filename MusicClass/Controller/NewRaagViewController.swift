@@ -17,6 +17,7 @@ protocol sendDataToRaagTable{
 class NewRaagViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
 
     
+    @IBOutlet weak var bottomViewForSaveButton: UIView!
     @IBOutlet var newRaagView: UIView!
     @IBOutlet weak var raagNameTextField: UITextField!
     
@@ -41,6 +42,12 @@ class NewRaagViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         //Create a Tap Gesture - when user clicks on View after typing is donein textfield, the keyboard should gooff
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
         view.addGestureRecognizer(tapGesture)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        title =  "New Raag Details"
+        newRaagView.backgroundColor = UIColor.flatSkyBlue
+        bottomViewForSaveButton.backgroundColor = UIColor.flatSkyBlue
     }
     
     

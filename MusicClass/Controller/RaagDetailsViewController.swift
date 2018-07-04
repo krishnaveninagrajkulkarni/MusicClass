@@ -8,59 +8,72 @@
 
 import UIKit
 import CoreData
+import ChameleonFramework
 
 class RaagDetailsViewController: UITableViewController {
-     var sectionTitles = ["Saptak", "Sargam Geet", "Taal" ,"Jaankari"]
-     var raagDetails =  [NewRaagDetails]()
+    var titleName = ["JaanKari", "Taal", "Saptak", "Sargam Geet"]
+    var raagDetails =  [NewRaagDetails]()
     var storeFetchedData = [String]()  //Empty Array
-    
+    let colour = UIColor.flatSkyBlue
     
     var selectedName: String? {
         didSet {
             readRowFromDB()
+           // displayTestData()
         }
     }
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // viewFecthedData()
+        tableView.estimatedRowHeight = 150
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        tableView.separatorStyle = .none
+    
     }
-/*
-    // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return  sectionTitles.count
+
+    override func viewWillAppear(_ animated: Bool) {
+        //This 'title' is the default title of the view
+        title = selectedName
+        //coloring the navigation bar into skyblue
+        navigationController?.navigationBar.barTintColor = colour
+        
+        //tintcolor applies to items in the NavigationBar
+        navigationController?.navigationBar.tintColor = ContrastColorOf(colour, returnFlat: true)
+        
+        //coloring the navigation bar 'back' title
+       // navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: ContrastColorOf(colour, returnFlat: true)]
+        
+    
     }
-    */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return   storeFetchedData.count
     }
-    /*
  
-  //This method viewForHeaderInSection displays customised title for section
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerCell = tableView.dequeueReusableCell(withIdentifier: "raagNewCell") as! CustomViewCell
-        headerCell.backgroundColor = UIColor.cyan
-        headerCell.headerLabel.text! = sectionTitles[section]
-        return headerCell
-    }
-    */
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         let cell = tableView.dequeueReusableCell(withIdentifier: "raagDetailsCell", for: indexPath) as! CustomViewCell
-        // let temporrayData = raagDetails[indexPath.row]
-        // cell.textLabel?.text = temporrayData.jaankari! + " " + temporrayData.taal! + " " + temporrayData.saptak!
-         // cell.textLabel?.text = storeFetchedData[indexPath.row]
-        cell.dataLabel.text = storeFetchedData[indexPath.row]
+         let cell = tableView.dequeueReusableCell(withIdentifier: "custCell", for: indexPath) as! CustomViewCell
+        
+        //cell.textLabel?.text =  storeFetchedData[indexPath.row]
+        cell.descriptionLabel.text = storeFetchedData[indexPath.row]
+        cell.titleLabel.text = titleName[indexPath.row]
+        
+        
+        if let colourShade = FlatSkyBlue().darken(byPercentage:CGFloat(indexPath.row)/CGFloat(storeFetchedData.count))
+        {
+            cell.backgroundColor = colourShade
+            cell.descriptionLabel.textColor = ContrastColorOf(colourShade, returnFlat: true)
+            cell.titleLabel.textColor = ContrastColorOf(colourShade, returnFlat: true)
+            //cell.textLabel?.textColor = ContrastColorOf(colourShade, returnFlat: true)
+        }
          return cell
     }
     //Fetching a Row from DB
     func readRowFromDB(){
-        print("I am reading from DB")
         let request: NSFetchRequest<NewRaagDetails> = NewRaagDetails.fetchRequest()
-        
         let predicate = NSPredicate(format: "raagName==%@ ", selectedName!)
-   
         request.predicate = predicate
+        
         do{
             raagDetails = try context.fetch(request)
             
@@ -81,8 +94,12 @@ class RaagDetailsViewController: UITableViewController {
         tableView.reloadData()
     }
 
-    func addInToLocalArray(){
-        
+    func  displayTestData(){
+        for number in storeFetchedData {
+            print("%%%%%%%%%%%%%%%%%%%%%%%")
+            print(number)
+            
+        }
     }
 }
 

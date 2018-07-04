@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import ChameleonFramework
 
 
 class RaagsTableViewController: UITableViewController, sendDataToRaagTable {
@@ -21,10 +22,11 @@ class RaagsTableViewController: UITableViewController, sendDataToRaagTable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        print("I am in ViewDidLoad of RaagTableViewController")
-        readTheDataFromNewRaagDetailsTable()
+        //This removes the separator lines from TableView, this is done as we have added random colors to each cell using chameleon framework, so to make to more clean, we remove the default separators.
+        tableView.separatorStyle = .none
         
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        readTheDataFromNewRaagDetailsTable()
     }
     
     //Mark - Protocol Conformation by defining the Delegate Method
@@ -38,7 +40,11 @@ class RaagsTableViewController: UITableViewController, sendDataToRaagTable {
         tableView.reloadData()
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        let color = UIColor.flatSkyBlue
+        navigationController?.navigationBar.barTintColor = color
+        navigationController?.navigationBar.tintColor = ContrastColorOf(color, returnFlat: true)
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToNewRaag" {
             let destinationVC = segue.destination as! NewRaagViewController
@@ -60,7 +66,10 @@ class RaagsTableViewController: UITableViewController, sendDataToRaagTable {
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "raagCells", for: indexPath)
-        cell.textLabel?.text = localRaagName[indexPath.row]                         //raagNames[indexPath.row].raagName
+        let colour = UIColor.randomFlat
+        cell.backgroundColor = colour                      //randomflat is taken from chameleonFrameWork
+        cell.textLabel?.text = localRaagName[indexPath.row]
+        cell.textLabel?.textColor = ContrastColorOf(colour, returnFlat: true)
         return cell
     }
     
