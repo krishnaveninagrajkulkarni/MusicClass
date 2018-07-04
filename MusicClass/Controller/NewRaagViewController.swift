@@ -53,7 +53,6 @@ class NewRaagViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     
     //Mark - TextField n TextView Delegates Methods
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        print("i am in textViewShouldBeginEditing")
         if textView == jaankariTextView {
             listenToKeyboardNotifications()
         }
@@ -61,7 +60,6 @@ class NewRaagViewController: UIViewController, UITextViewDelegate, UITextFieldDe
     }
  
     func textViewDidEndEditing(_ textView: UITextView) {
-          print("i am in textViewDidEndEditing")
         if textView == jaankariTextView {
             stopListeningToKeyboardNotification()
         }
@@ -87,11 +85,9 @@ class NewRaagViewController: UIViewController, UITextViewDelegate, UITextFieldDe
       let keyboardRect =  (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
     
         if notification.name == NSNotification.Name.UIKeyboardWillHide {
-            print("UIView Resumes #################")
+           
             newRaagView.frame.origin.y = 0
-   
         }else {
-             print("UIView Moved *************")
              newRaagView.frame.origin.y  = (-((keyboardRect?.height)!))
         }
     }
@@ -117,6 +113,12 @@ class NewRaagViewController: UIViewController, UITextViewDelegate, UITextFieldDe
         saveNewRaagDetails()
         print("Data Saved Successfully......")
         
+        let alert = UIAlertController(title: "Alert", message: "Raag Saved Successfully ", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default comment"), style: .default, handler: { (_) in
+            print("OK Alert!!")
+           self.navigationController?.popViewController(animated: true)  // GoBack to previous controller of stack of Navigation Controller
+        }))
+        present(alert, animated: true , completion: nil)
         //Send Only new added Raag Name to RaagsTableViewController to display raagName on its list
         sendDataDelegate?.delegateMethodOfNewRaag(data: raagNameTextField.text!)
         

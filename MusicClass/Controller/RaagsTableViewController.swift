@@ -44,6 +44,7 @@ class RaagsTableViewController: UITableViewController, sendDataToRaagTable {
         let color = UIColor.flatSkyBlue
         navigationController?.navigationBar.barTintColor = color
         navigationController?.navigationBar.tintColor = ContrastColorOf(color, returnFlat: true)
+        
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToNewRaag" {
